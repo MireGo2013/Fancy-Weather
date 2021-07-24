@@ -1,4 +1,13 @@
 export default class BackgroundService {
+  //   getBackgroundSimulationAPI() {
+  //     return new Promise((resolve, reject) => {
+  //       setTimeout(() => {
+  //         let result = this.getBackgroundFirst();
+  //         resolve(result);
+  //       }, 0);
+  //     });
+  //   }
+
   getBackground = () => {
     const bg = ["bg1", "bg2", "bg3"];
     if (!localStorage.getItem("bg")) {

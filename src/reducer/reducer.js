@@ -16,7 +16,10 @@ const reducer = (store = initialState, action) => {
   switch (action.type) {
     case FETCH_WEATHER_REQUSTED:
       return {
-        ...store,
+        weather: [],
+        loading: true,
+        error: null,
+        backgroundApp: null,
       };
     case FETCH_WEATHER_SUCCESS:
       return {

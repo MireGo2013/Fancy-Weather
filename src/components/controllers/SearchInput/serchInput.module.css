@@ -1,0 +1,12 @@
+.search_panel {
+  width: 274px;
+  height: 44px;
+  border-radius: 5px;
+  font-size: 1.7rem;
+  padding-left: 5px;
+  cursor: pointer;
+  font-family: "Montserrat", sans-serif;
+  background: rgba(76, 82, 85, 0.4);
+  border: 1px solid rgba(228, 227, 227, 0.2);
+  color: azure;
+}

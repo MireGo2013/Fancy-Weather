@@ -5,12 +5,7 @@ const withBgImage = (fn) => (Component) => {
     return (
       <BackgroundConsumer>
         {(backgroundService) => {
-          return (
-            <Component
-              {...props}
-              getBackground={backgroundService.getBackground}
-            />
-          );
+          return <Component {...props} backgroundService={backgroundService} />;
         }}
       </BackgroundConsumer>
     );

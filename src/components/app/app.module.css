@@ -9,6 +9,7 @@
 html {
   font-family: "Montserrat", sans-serif;
   font-size: 10px;
+  color: azure;
 }
 
 .container_app {
@@ -17,7 +18,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  transition: all 1s;
+  transition: all 0.5s;
 }
 
 .container_app.bg1 {
