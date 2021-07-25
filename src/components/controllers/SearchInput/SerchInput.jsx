@@ -5,14 +5,17 @@ const SerchInput = () => {
   const [valueInput, setValueInput] = useState("");
 
   return (
-    <div>
+    <div className={style.search_container}>
       <input
-        className={style.search_panel}
+        className={`${style.search} ${style.search_panel}`}
         onChange={(e) => setValueInput(e.target.value)}
         placeholder="Search city"
         maxLength="21"
         value={valueInput}
       />
+      <button className={`${style.btn} ${style.search} ${style.search_btn} `}>
+        SEARCH
+      </button>
     </div>
   );
 };

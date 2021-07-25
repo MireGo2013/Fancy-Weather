@@ -4,7 +4,7 @@ import App from "./components/app";
 import { Provider } from "react-redux";
 import { BackgroundProvider } from "./context/bakgroundContext";
 import store from "./store";
-import BackgroundService from "./services";
+import {BackgroundService} from "./services";
 import ErrorBoundary from "./components/ErrorBoudary";
 
 const backgroundService = new BackgroundService();

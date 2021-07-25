@@ -3,12 +3,14 @@ import {
   FETCH_WEATHER_SUCCESS,
   FETCH_WEATHER_FAILURE,
   TOGGLE_RENDER_BG,
+  GET_LOCATION_USER,
 } from "../actions/actionCreators";
 
 const initialState = {
   weather: [],
   loading: true,
   error: null,
+  geolocation: null,
   backgroundApp: null,
 };
 
@@ -38,6 +40,12 @@ const reducer = (store = initialState, action) => {
         ...store,
         loading: false,
         backgroundApp: action.payload,
+      };
+    case GET_LOCATION_USER:
+      return {
+        ...store,
+        loading: false,
+        geolocation: action.payload,
       };
 
     default:

@@ -1,3 +1,4 @@
 import BackgroundService from "./BackgroundService";
+import WeatherForecastService from "./WeatherForecastService";
 
-export default BackgroundService;
+export { BackgroundService, WeatherForecastService };
