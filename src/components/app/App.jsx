@@ -12,6 +12,12 @@ class AppContainer extends Component {
     this.props.getWeatherData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.currentLangId !== this.props.currentLangId) {
+      this.props.getWeatherData();
+    }
+  }
+
   render() {
     return <App {...this.props} />;
   }
@@ -19,7 +25,6 @@ class AppContainer extends Component {
 
 const App = (props) => {
   const { bgImage, getImgBackground, loading } = props;
-  console.log(props.weather);
   return (
     <div className={style.container_app + " " + style[bgImage]}>
       <div className={style.gradient_container}>
@@ -32,10 +37,12 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     bgImage: state.backgroundApp,
     loading: state.loading,
-	weather: state.weather
+    weather: state.weather,
+    currentLangId: state.language.currnetLang,
   };
 };
 

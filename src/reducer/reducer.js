@@ -3,18 +3,21 @@ import {
   FETCH_WEATHER_SUCCESS,
   FETCH_WEATHER_FAILURE,
   TOGGLE_RENDER_BG,
+  CHANGE_LANG,
 } from "../actions/actionCreators";
 
 const initialState = {
   weather: null,
   loading: true,
   error: null,
-  geolocation: null,
   backgroundApp: null,
-  language: [
-    { id: "en", title: "EN" },
-    { id: "ru", title: "RU" },
-  ],
+  language: {
+    currnetLang: "",
+    langList: [
+      { id: "en", title: "EN" },
+      { id: "ru", title: "RU" },
+    ],
+  },
 };
 
 const reducer = (store = initialState, action) => {
@@ -22,6 +25,9 @@ const reducer = (store = initialState, action) => {
     case FETCH_WEATHER_REQUSTED:
       return {
         ...store,
+        weather: null,
+        loading: true,
+        error: null,
       };
     case FETCH_WEATHER_SUCCESS:
       return {
@@ -40,6 +46,11 @@ const reducer = (store = initialState, action) => {
         ...store,
         loading: false,
         backgroundApp: action.payload,
+      };
+    case CHANGE_LANG:
+      return {
+        ...store,
+        language: { ...store.language, currnetLang: action.payload },
       };
     default:
       return store;

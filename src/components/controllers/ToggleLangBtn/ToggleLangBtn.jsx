@@ -2,29 +2,32 @@ import React, { useState } from "react";
 import style from "./toggleLangBtn.module.css";
 import { connect } from "react-redux";
 import stroke from "../../../assets/icon/Stroke.png";
+import { changeLangAc } from "../../../actions/actionCreators";
 
-const ToggleLangBtn = ({ language }) => {
-  const [isActive, setActive] = useState(false);
-  const [currentLang, setCurrentLang] = useState("EN");
-  const isOpen = isActive ? "active" : null;
+const ToggleLangBtn = ({ language, changeLang }) => {
+  const [isActiveMenu, setActiveMenu] = useState(false);
+  const isOpen = isActiveMenu ? "active" : null;
 
-  const LangItems = language.map(({ id, title }) => (
+  const LangItems = language.langList.map(({ id, title }) => (
     <LangItem
       key={id}
+      id={id}
       title={title}
-      setActive={setActive}
-      setCurrentLang={setCurrentLang}
-      isActive={isActive}
+      setActiveMenu={setActiveMenu}
+      isActiveMenu={isActiveMenu}
+      changeLang={changeLang}
     />
   ));
+  const localEng = localStorage.getItem("lang");
+  const title = localEng ? localEng.toLocaleUpperCase() : "EN";
 
   return (
     <div className={`${style.lang_menu_wrapper} ${style[isOpen]}`}>
       <div
-        onClick={() => setActive(!isActive)}
+        onClick={() => setActiveMenu(!isActiveMenu)}
         className={`${style.drop_down_label} `}
       >
-        <span>{currentLang}</span>
+        <span>{title}</span>
         <div>
           <img src={stroke} alt="stroke" />
         </div>
@@ -35,13 +38,13 @@ const ToggleLangBtn = ({ language }) => {
 };
 
 const LangItem = (props) => {
-  const { title, setActive, setCurrentLang, isActive } = props;
+  const { id, title, isActiveMenu, setActiveMenu, changeLang } = props;
   return (
     <li
       className={style.menu_item}
       onClick={() => {
-        setActive(!isActive);
-        setCurrentLang(title);
+        setActiveMenu(!isActiveMenu);
+        changeLang(id);
       }}
     >
       {title}
@@ -56,7 +59,9 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = (dispatch) => {
-  return {};
+  return {
+    changeLang: (id) => dispatch(changeLangAc(id)),
+  };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ToggleLangBtn);

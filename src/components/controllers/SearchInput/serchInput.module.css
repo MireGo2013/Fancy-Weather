@@ -5,7 +5,7 @@
 }
 
 .search {
-  font-size: 1.7rem;
+  font-size: 1.4rem;
   cursor: pointer;
   font-family: "Montserrat", sans-serif;
   background: rgba(76, 82, 85, 0.4);
@@ -26,6 +26,7 @@
   background: rgb(206, 209, 211);
   border: none;
   border-radius: 0 5px 5px 0;
+  font-weight: 700;
 }
 
 .search_btn:hover {

@@ -21,15 +21,13 @@ export default class WeatherForecastService {
   };
 
   getFullDataWeather = async (lang, units) => {
-    if (!localStorage.getItem("lang") && !localStorage.getItem("units")) {
-      const res = await this.fetchWeatherDataFromAPI();
+    if (!localStorage.getItem("lang")) {
       localStorage.setItem("lang", "en");
-      localStorage.setItem("units", "metric");
+      const res = await this.fetchWeatherDataFromAPI();
       return this._transformWeatherData(res);
     }
-    const res = await this.fetchWeatherDataFromAPI(lang, units);
+    const res = await this.fetchWeatherDataFromAPI(lang);
     const myResponse = this._transformWeatherData(res);
-    // console.log(myResponse);
     return myResponse;
   };
 
@@ -44,6 +42,7 @@ export default class WeatherForecastService {
 
     return {
       cityName: data.city.name,
+      country: data.city.country,
       coord: {
         lat: data.city.coord.lat,
         lon: data.city.coord.lon,
