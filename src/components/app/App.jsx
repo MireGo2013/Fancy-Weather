@@ -2,18 +2,14 @@ import React, { Component } from "react";
 import { compose } from "redux";
 import { connect } from "react-redux";
 import style from "./app.module.css";
-import {
-  toggleBackground,
-  getUsersLocationAc,
-  getUsersLocation,
-} from "../../actions/actionCreators";
-import { WeatherForecastService } from "../../services";
-import withBgImage from "../../hoc";
+import { toggleBackground, getWeatherData } from "../../actions/actionCreators";
+import { withBgImage, withWeatherService } from "../../hoc";
 import Controllers from "../controllers";
 
 class AppContainer extends Component {
   componentDidMount() {
     this.props.getImgBackground();
+    this.props.getWeatherData();
   }
 
   render() {
@@ -22,8 +18,8 @@ class AppContainer extends Component {
 }
 
 const App = (props) => {
-  console.log(props);
   const { bgImage, getImgBackground, loading } = props;
+  console.log(props.weather);
   return (
     <div className={style.container_app + " " + style[bgImage]}>
       <div className={style.gradient_container}>
@@ -39,18 +35,20 @@ const mapStateToProps = (state) => {
   return {
     bgImage: state.backgroundApp,
     loading: state.loading,
-    geolocation: state.geolocation,
+	weather: state.weather
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const { backgroundService } = ownProps;
+  const { backgroundService, weatherService } = ownProps;
   return {
     getImgBackground: () => toggleBackground(backgroundService)(dispatch),
+    getWeatherData: () => getWeatherData(weatherService)(dispatch),
   };
 };
 
 export default compose(
+  withWeatherService(),
   withBgImage(),
   connect(mapStateToProps, mapDispatchToProps)
 )(AppContainer);

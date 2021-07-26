@@ -1,3 +1,4 @@
 import withBgImage from "./withBgImage";
+import withWeatherService from "./withWeatherService";
 
-export default withBgImage;
+export { withBgImage, withWeatherService };
