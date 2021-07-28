@@ -18,8 +18,8 @@ const ToggleLangBtn = ({ language, changeLang }) => {
       changeLang={changeLang}
     />
   ));
-  const localEng = localStorage.getItem("lang");
-  const title = localEng ? localEng.toLocaleUpperCase() : "EN";
+  const title = language.currnetLang.toLocaleUpperCase();
+  
 
   return (
     <div className={`${style.lang_menu_wrapper} ${style[isOpen]}`}>

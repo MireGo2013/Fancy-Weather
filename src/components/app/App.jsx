@@ -5,6 +5,7 @@ import style from "./app.module.css";
 import { toggleBackground, getWeatherData } from "../../actions/actionCreators";
 import { withBgImage, withWeatherService } from "../../hoc";
 import Controllers from "../controllers";
+import WeatherCard from "../WeatherMain";
 
 class AppContainer extends Component {
   componentDidMount() {
@@ -13,8 +14,13 @@ class AppContainer extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (prevProps.currentLangId !== this.props.currentLangId) {
-      this.props.getWeatherData();
+    console.log(this.props);
+    if (prevProps.currnetLang !== this.props.currnetLang) {
+      this.props.getWeatherData(this.props.city);
+    } else if (prevProps.currentUnits !== this.props.currentUnits) {
+      this.props.getWeatherData(this.props.city);
+    } else if (prevProps.city !== this.props.city) {
+      this.props.getWeatherData(this.props.city);
     }
   }
 
@@ -24,12 +30,13 @@ class AppContainer extends Component {
 }
 
 const App = (props) => {
-  const { bgImage, getImgBackground, loading } = props;
+  const { bgImage, getImgBackground, loading, currnetLang } = props;
   return (
     <div className={style.container_app + " " + style[bgImage]}>
       <div className={style.gradient_container}>
         <div className={style.content_container}>
           <Controllers onChangeBg={getImgBackground} loading={loading} />
+          <WeatherCard currnetLang={currnetLang} />
         </div>
       </div>
     </div>
@@ -37,12 +44,12 @@ const App = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     bgImage: state.backgroundApp,
     loading: state.loading,
-    weather: state.weather,
-    currentLangId: state.language.currnetLang,
+    currnetLang: state.language.currnetLang,
+    currentUnits: state.units.currentUnits,
+    city: state.searchCity,
   };
 };
 
@@ -50,7 +57,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   const { backgroundService, weatherService } = ownProps;
   return {
     getImgBackground: () => toggleBackground(backgroundService)(dispatch),
-    getWeatherData: () => getWeatherData(weatherService)(dispatch),
+    getWeatherData: (city) => getWeatherData(weatherService, city)(dispatch),
   };
 };
 

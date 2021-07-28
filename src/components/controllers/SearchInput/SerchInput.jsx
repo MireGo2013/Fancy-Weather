@@ -1,7 +1,9 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import style from "./serchInput.module.css";
+import { searchCityAc } from "../../../actions/actionCreators";
 
-const SerchInput = () => {
+const SerchInput = (props) => {
   const [valueInput, setValueInput] = useState("");
 
   return (
@@ -13,11 +15,29 @@ const SerchInput = () => {
         maxLength="21"
         value={valueInput}
       />
-      <button className={`${style.btn} ${style.search} ${style.search_btn} `}>
+      <button
+        className={`${style.btn} ${style.search} ${style.search_btn}`}
+        onClick={() => {
+          setValueInput("");
+          props.searchCity(valueInput);
+        }}
+      >
         SEARCH
       </button>
     </div>
   );
 };
 
-export default SerchInput;
+const mapStateToProps = (state) => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    searchCity: (city) => {
+      dispatch(searchCityAc(city));
+    },
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SerchInput);

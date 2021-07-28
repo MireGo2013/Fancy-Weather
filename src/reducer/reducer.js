@@ -4,6 +4,8 @@ import {
   FETCH_WEATHER_FAILURE,
   TOGGLE_RENDER_BG,
   CHANGE_LANG,
+  CHANGE_UNITS,
+  SEARCH_CITY,
 } from "../actions/actionCreators";
 
 const initialState = {
@@ -11,8 +13,20 @@ const initialState = {
   loading: true,
   error: null,
   backgroundApp: null,
+  searchCity: "",
+  units: {
+    currentUnits: localStorage.getItem("units")
+      ? localStorage.getItem("units")
+      : "metric",
+    metricList: [
+      { id: "imperial", title: "°F" },
+      { id: "metric", title: "°С" },
+    ],
+  },
   language: {
-    currnetLang: "",
+    currnetLang: localStorage.getItem("lang")
+      ? localStorage.getItem("lang")
+      : "en",
     langList: [
       { id: "en", title: "EN" },
       { id: "ru", title: "RU" },
@@ -51,6 +65,16 @@ const reducer = (store = initialState, action) => {
       return {
         ...store,
         language: { ...store.language, currnetLang: action.payload },
+      };
+    case CHANGE_UNITS:
+      return {
+        ...store,
+        units: { ...store.units, currentUnits: action.payload },
+      };
+    case SEARCH_CITY:
+      return {
+        ...store,
+        searchCity: action.payload,
       };
     default:
       return store;

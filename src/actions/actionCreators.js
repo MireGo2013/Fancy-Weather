@@ -3,6 +3,8 @@ export const FETCH_WEATHER_SUCCESS = "FETCH_WEATHER_SUCCESS";
 export const FETCH_WEATHER_FAILURE = "FETCH_WEATHER_FAILURE";
 export const TOGGLE_RENDER_BG = "TOGGLE_RENDER_BG";
 export const CHANGE_LANG = "CHANGE_LANG";
+export const CHANGE_UNITS = "CHANGE_UNITS";
+export const SEARCH_CITY = "SEARCH_CITY";
 
 const weatherRequstedAc = () => {
   return { type: FETCH_WEATHER_REQUSTED };
@@ -33,11 +35,10 @@ const toggleBackground = (backgroundService) => (dispatch) => {
   dispatch(toggleBackGroundAc(backgroundService.getBackground()));
 };
 
-const getWeatherData = (weatherService) => (dispatch) => {
+const getWeatherData = (weatherService, city) => (dispatch) => {
   dispatch(weatherRequstedAc());
-  const langId = localStorage.getItem('lang')
   weatherService
-    .getFullDataWeather(langId)
+    .getFullDataWeather(city)
     .then((data) => dispatch(weatherLoadedAc(data)))
     .catch((error) => dispatch(weatherErrorAc(error)));
 };
@@ -50,7 +51,28 @@ const changeLangAc = (id) => {
   };
 };
 
-export { toggleBackground, getWeatherData, changeLangAc };
+const changeUnitsAc = (id) => {
+  localStorage.setItem("units", id);
+  return {
+    type: CHANGE_UNITS,
+    payload: id,
+  };
+};
+
+const searchCityAc = (city) => {
+  return {
+    type: SEARCH_CITY,
+    payload: city,
+  };
+};
+
+export {
+  toggleBackground,
+  getWeatherData,
+  changeLangAc,
+  searchCityAc,
+  changeUnitsAc,
+};
 
 //===========
 // if get async requst BG Images

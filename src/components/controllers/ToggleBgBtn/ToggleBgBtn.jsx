@@ -2,11 +2,7 @@ import Spinner from "../../spinner";
 import style from "./toggleBgBtn.module.css";
 
 const ToggleBgBtn = (props) => {
-  const spinner = props.loading ? (
-    <Spinner isLoading={props.loading} />
-  ) : (
-    <Spinner />
-  );
+  const spinner = props.loading ? <Spinner /> : null;
   return (
     <button
       onClick={() => props.onChangeBg()}

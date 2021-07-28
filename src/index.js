@@ -11,6 +11,7 @@ import ErrorBoundary from "./components/ErrorBoudary";
 
 const weatherService = new WeatherForecastService();
 const backgroundService = new BackgroundService();
+
 ReactDom.render(
   <Provider store={store}>
     <ErrorBoundary>
