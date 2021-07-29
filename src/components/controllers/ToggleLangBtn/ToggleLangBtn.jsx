@@ -18,8 +18,7 @@ const ToggleLangBtn = ({ language, changeLang }) => {
       changeLang={changeLang}
     />
   ));
-  const title = language.currnetLang.toLocaleUpperCase();
-  
+  const title = language.currentLang.toLocaleUpperCase();
 
   return (
     <div className={`${style.lang_menu_wrapper} ${style[isOpen]}`}>

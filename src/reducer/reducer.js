@@ -24,7 +24,7 @@ const initialState = {
     ],
   },
   language: {
-    currnetLang: localStorage.getItem("lang")
+    currentLang: localStorage.getItem("lang")
       ? localStorage.getItem("lang")
       : "en",
     langList: [
@@ -64,7 +64,7 @@ const reducer = (store = initialState, action) => {
     case CHANGE_LANG:
       return {
         ...store,
-        language: { ...store.language, currnetLang: action.payload },
+        language: { ...store.language, currentLang: action.payload },
       };
     case CHANGE_UNITS:
       return {

@@ -1,0 +1,27 @@
+.item_contaner {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 2.2rem;
+  line-height: 27px;
+  margin-right: 50px;
+}
+
+.item_contaner:last-child {
+  margin-right: 0;
+}
+
+.weather_data_wrapper {
+  display: flex;
+  font-weight: 600;
+  font-size: 8rem;
+  line-height: 98px;
+}
+
+.sky_container {
+  width: 90px;
+}
+
+.sky_container img {
+  width: 100%;
+  transform: translateY(-15px);
+}

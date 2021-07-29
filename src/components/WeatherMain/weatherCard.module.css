@@ -2,10 +2,7 @@
   font-weight: bold;
   color: white;
   text-transform: uppercase;
-}
-.loading {
-  width: 100vw;
-  height: 100vh;
+  display: flex;
 }
 
 .title_city {
@@ -14,40 +11,49 @@
 }
 
 .date {
+  display: flex;
   font-weight: 600;
   font-size: 2.4rem;
   line-height: 29px;
   text-transform: none;
 }
 
-.weather_today_container {
-  max-width: 600px;
-  display: flex;
-  border: 2px solid red;
-}
-
-.weather_num {
-  flex: 1;
-  font-size: 30rem;
-}
+.temp_wrapper{
+	position: relative;
+  }
+  .temp {
+	font-size: 306px;
+	line-height: 373px;
+  }
+  
+  .degree {
+	width: 42px;
+	height: 35px;
+	font-size: 10rem;
+	line-height: 70px;
+	position: absolute;
+	top: 22%;
+	left: 100%;
+  }
+  
 
 .sky_container {
-  align-self: flex-start;
-  height: 100%;
+  width: 162px;
+}
+
+.sky_container img {
   width: 100%;
-  background: paleturquoise;
 }
 
 .description_container {
-  flex: 0.8;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  align-items: flex-end;
 }
 
 .description {
   font-size: 2.2rem;
   line-height: 37px;
-  margin-left: auto;
+  margin-left: 90px;
+  margin-bottom: auto;
 }

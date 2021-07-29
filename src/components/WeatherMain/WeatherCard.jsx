@@ -2,31 +2,53 @@ import React from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import style from "./weatherCard.module.css";
+import DateCard from "../Date/Date";
+import Time from "../Time";
+import WeatherList from "../WeatherList";
 
 const WeatherCard = (props) => {
   if (!props.weather) {
     return null;
   }
   const {
-    cityName,
-    country,
-    weatherToday: { data, description, feelsLike, humidity, temp, wind },
-  } = props.weather;
-
+    currentLang,
+    weather: {
+      cityName,
+      country,
+      weatherToday: {
+        data,
+        description,
+        feelsLike,
+        humidity,
+        temp,
+        wind,
+        icon,
+      },
+      weatherList,
+    },
+  } = props;
+  console.log(props);
   return (
-    <main className={style.main_container}>
+    <>
       <h1 className={style.title_city}>
         {cityName}, {country}
       </h1>
-      <p className={style.date}>
-        {data} <span>17:23</span>
-      </p>
-      <section className={style.weather_today_container}>
-        <div className={style.weather_num}>
-          <span>{temp}</span>
+      <div className={style.date}>
+        <DateCard date={data} isMain={true} lang={currentLang} />
+        <Time />
+      </div>
+      <main className={style.main_container}>
+        <div className={style.temp_wrapper}>
+          <span className={style.temp}>{temp}</span>
+          <p className={style.degree}>°</p>
         </div>
         <div className={style.description_container}>
-          <div className={style.sky_container}>IMG</div>
+          <div className={style.sky_container}>
+            <img
+              src={`http://openweathermap.org/img/w/${icon}.png`}
+              alt="sky"
+            />
+          </div>
           <div className={style.description}>
             <p>{description}</p>
             <p>Feels like: {feelsLike}°</p>
@@ -34,8 +56,9 @@ const WeatherCard = (props) => {
             <p>Humidity: {humidity}%</p>
           </div>
         </div>
-      </section>
-    </main>
+      </main>
+      <WeatherList weatherList={weatherList} lang={currentLang} />
+    </>
   );
 };
 

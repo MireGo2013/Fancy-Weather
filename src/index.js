@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDom from "react-dom";
-import App from "./components/app";
+import AppContainer from "./containers";
 import { Provider } from "react-redux";
 import { BackgroundProvider } from "./context/bakgroundContext";
 import { WeatherProvider } from "./context/weatherContext";
@@ -17,7 +17,7 @@ ReactDom.render(
     <ErrorBoundary>
       <WeatherProvider value={weatherService}>
         <BackgroundProvider value={backgroundService}>
-          <App />
+          <AppContainer />
         </BackgroundProvider>
       </WeatherProvider>
     </ErrorBoundary>

@@ -42,7 +42,7 @@ export default class WeatherForecastService {
     return myResponse;
   };
 
-  _transformWeatherData = (data, lang) => {
+  _transformWeatherData = (data) => {
     const listWeather = data.list.filter((reading) => {
       return reading.dt_txt.includes("18:00:00");
     });
@@ -59,11 +59,7 @@ export default class WeatherForecastService {
         lon: data.city.coord.lon,
       },
       weatherToday: {
-        data: new Date(today.dt_txt).toLocaleString(lang, {
-          day: "numeric",
-          month: "long",
-          weekday: "short",
-        }),
+        data: today.dt_txt,
         temp: Math.round(today.main.temp),
         description: today.weather[0].description,
         feelsLike: Math.round(today.main.feels_like),
@@ -96,3 +92,10 @@ export default class WeatherForecastService {
 // new Date('2021-07-26 18:00:00').toLocaleString('ru',{day: 'numeric', month: 'long', weekday: 'short'})
 // "пн, 26 июля"
 // api.openweathermap.org/data/2.5/forecast?q={city name}&appid={API key}
+//http://openweathermap.org/img/w/10d.png";
+
+// data: new Date(today.dt_txt).toLocaleString(lang, {
+// 	day: "numeric",
+// 	month: "long",
+// 	weekday: "short",
+//   }),
