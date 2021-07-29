@@ -27,7 +27,6 @@ const WeatherCard = (props) => {
       weatherList,
     },
   } = props;
-  console.log(props);
   return (
     <>
       <h1 className={style.title_city}>
