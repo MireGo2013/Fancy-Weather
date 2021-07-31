@@ -23,6 +23,6 @@ export const toggleLocalLang = (lang) => {
         LongitudeText: "Долгота",
       };
     default:
-      return "niewa";
+      return;
   }
 };
