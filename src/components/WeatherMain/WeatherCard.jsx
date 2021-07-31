@@ -70,7 +70,7 @@ const WeatherCard = (props) => {
           </div>
         </div>
       </main>
-      <WeatherList weatherList={weatherList} lang={currentLang} />
+        <WeatherList weatherList={weatherList} lang={currentLang} />
     </>
   );
 };

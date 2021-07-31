@@ -3,3 +3,13 @@
   align-items: flex-start;
   height: 100px;
 }
+
+@media (max-width: 625px) {
+  .header_container {
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+    height: 150px;
+    margin-bottom: 50px;
+  }
+}

@@ -10,5 +10,3 @@ const Row = ({ left, right }) => {
 };
 
 export default Row;
-
-// <Row left={Component. Main } right={Component Map}/>

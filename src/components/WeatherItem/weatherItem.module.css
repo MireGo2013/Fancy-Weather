@@ -25,3 +25,48 @@
   width: 100%;
   transform: translateY(-15px);
 }
+
+@media (max-width: 790px) {
+  .item_contaner {
+    font-size: 1.8rem;
+    margin-right: 30px;
+    line-height: 25px;
+  }
+  .weather_data_wrapper {
+    font-size: 7rem;
+    line-height: 80px;
+  }
+  .sky_container {
+    width: 70px;
+  }
+}
+
+@media (max-width: 580px) {
+  .item_contaner {
+    font-size: 1.6rem;
+    margin-right: 20px;
+    line-height: 35px;
+  }
+  .weather_data_wrapper {
+    font-size: 6rem;
+    line-height: 60px;
+  }
+  .sky_container {
+    width: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .item_contaner {
+    font-size: 1.2rem;
+    margin-right: 7px;
+    line-height: 30px;
+  }
+  .weather_data_wrapper {
+    font-size: 3rem;
+    line-height: 40px;
+  }
+  .sky_container {
+    width: 45px;
+  }
+}
