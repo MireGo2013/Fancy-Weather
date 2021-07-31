@@ -1,11 +1,14 @@
+import React, { useContext } from "react";
 import style from "./map.module.css";
 import { connect } from "react-redux";
 import GoogleMapReact from "google-map-react";
-import Spinner from "../../spinner";
 import { transformCoord } from "../../../utils";
+import { ContextLang } from "../../../context/langContext";
 
-const Map = ({ coord }) => {
-  if (!coord) return <Spinner />;
+const Map = ({ coord, currentLang }) => {
+  const toggleLocalLang = useContext(ContextLang);
+  const { LatitudeText, LongitudeText } = toggleLocalLang(currentLang);
+  if (!coord) return null;
   const defaultProps = {
     center: {
       lat: coord.lat,
@@ -26,8 +29,12 @@ const Map = ({ coord }) => {
         />
       </div>
       <div className={style.cord_wrapper}>
-        <p>Latitude: {lat}'</p>
-        <p>Longitude: {lon}'</p>
+        <p>
+          {LatitudeText}: {lat}'
+        </p>
+        <p>
+          {LongitudeText}: {lon}'
+        </p>
       </div>
     </div>
   );

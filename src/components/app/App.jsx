@@ -5,15 +5,22 @@ import Row from "../Row";
 import Map from "../controllers/Map";
 
 const App = (props) => {
-  const { bgImage, getImgBackground, loading, currentLang } = props;
-    return (
+  const { bgImage, getImgBackground, loading, currentLang, getWeatherData } =
+    props;
+
+  return (
     <div className={style.container_app + " " + style[bgImage]}>
       <div className={style.gradient_container}>
         <div className={style.content_container}>
-          <Controllers onChangeBg={getImgBackground} loading={loading} />
+          <Controllers
+            onChangeBg={getImgBackground}
+            loading={loading}
+            getWeatherData={getWeatherData}
+            currentLang={currentLang}
+          />
           <Row
             left={<WeatherCard currentLang={currentLang} />}
-            right={<Map />}
+            right={<Map currentLang={currentLang} />}
           />
         </div>
       </div>

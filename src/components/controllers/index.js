@@ -5,14 +5,13 @@ import UnitsBtnList from "./UnitsBtn";
 import style from "./controllers.module.css";
 
 const Controllers = (props) => {
-  const { onChangeBg, loading } = props;
-
+  const { onChangeBg, loading, getWeatherData, currentLang } = props;
   return (
     <header className={style.header_container}>
       <ToggleBgBtn onChangeBg={onChangeBg} loading={loading} />
       <ToggleLangBtn />
       <UnitsBtnList />
-      <SerchInput />
+      <SerchInput getWeatherData={getWeatherData} currentLang={currentLang} />
     </header>
   );
 };

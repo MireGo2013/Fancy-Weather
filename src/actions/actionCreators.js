@@ -73,23 +73,3 @@ export {
   searchCityAc,
   changeUnitsAc,
 };
-
-//===========
-// if get async requst BG Images
-//===========
-// const toggleBackground = (backgroundService) => () => (dispatch) => {
-// 	dispatch(weatherRequstedAc());
-// 	backgroundService
-// 	  .getBackground()
-// 	  .then((bg) => dispatch(toggleBackGroundAc(bg)))
-// 	  .catch((error) => dispatch(weatherErrorAc(error)));
-//   };
-// const mapDispatchToProps = (dispatch, ownProps) => {
-// 	const { backgroundService } = ownProps;
-// 	return bindActionCreators(
-// 	  {
-// 		getImgBackground: toggleBackground(backgroundService),
-// 	  },
-// 	  dispatch
-// 	);
-//   };

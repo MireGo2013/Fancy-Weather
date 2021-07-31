@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
 import { compose } from "redux";
 import style from "./weatherCard.module.css";
 import DateCard from "../Date/Date";
 import Time from "../Time";
 import WeatherList from "../WeatherList";
+import { ContextLang } from "../../context/langContext";
 
 const WeatherCard = (props) => {
+  const toggleLocalLang = useContext(ContextLang);
+
   if (!props.weather) {
     return null;
   }
+
   const {
     currentLang,
     weather: {
@@ -27,6 +31,10 @@ const WeatherCard = (props) => {
       weatherList,
     },
   } = props;
+
+  const { feelsLikeText, windText, humidityText } =
+    toggleLocalLang(currentLang);
+
   return (
     <>
       <h1 className={style.title_city}>
@@ -50,9 +58,15 @@ const WeatherCard = (props) => {
           </div>
           <div className={style.description}>
             <p>{description}</p>
-            <p>Feels like: {feelsLike}°</p>
-            <p>Wind: {wind}m/s</p>
-            <p>Humidity: {humidity}%</p>
+            <p>
+              {feelsLikeText}: {feelsLike}°
+            </p>
+            <p>
+              {windText}: {wind}m/s
+            </p>
+            <p>
+              {humidityText}: {humidity}%
+            </p>
           </div>
         </div>
       </main>

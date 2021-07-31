@@ -18,24 +18,23 @@
   text-transform: none;
 }
 
-.temp_wrapper{
-	position: relative;
-  }
-  .temp {
-	font-size: 306px;
-	line-height: 373px;
-  }
-  
-  .degree {
-	width: 42px;
-	height: 35px;
-	font-size: 10rem;
-	line-height: 70px;
-	position: absolute;
-	top: 22%;
-	left: 100%;
-  }
-  
+.temp_wrapper {
+  position: relative;
+}
+.temp {
+  font-size: 24rem;
+  line-height: 373px;
+}
+
+.degree {
+  width: 42px;
+  height: 35px;
+  font-size: 10rem;
+  line-height: 70px;
+  position: absolute;
+  top: 22%;
+  left: 100%;
+}
 
 .sky_container {
   width: 162px;
