@@ -40,7 +40,10 @@ const getWeatherData = (weatherService, city) => (dispatch) => {
   weatherService
     .getFullDataWeather(city)
     .then((data) => dispatch(weatherLoadedAc(data)))
-    .catch((error) => dispatch(weatherErrorAc(error)));
+    .catch((error) => {
+      alert("Incorrect city!!! Please enter correct city name ");
+      dispatch(weatherErrorAc(error));
+    });
 };
 
 const changeLangAc = (id) => {
