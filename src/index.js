@@ -10,6 +10,7 @@ import { WeatherForecastService } from "./services";
 import { ContextLang } from "./context/langContext";
 import { toggleLocalLang } from "./lang/toggleLocalLang";
 import ErrorBoundary from "./components/ErrorBoudary";
+import "./style.css";
 
 const weatherService = new WeatherForecastService();
 const backgroundService = new BackgroundService();

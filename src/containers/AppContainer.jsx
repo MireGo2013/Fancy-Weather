@@ -33,6 +33,7 @@ const mapStateToProps = (state) => {
     currentLang: state.language.currentLang,
     currentUnits: state.units.currentUnits,
     city: state.searchCity,
+    error: state.error,
   };
 };
 

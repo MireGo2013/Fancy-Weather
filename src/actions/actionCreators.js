@@ -41,8 +41,7 @@ const getWeatherData = (weatherService, city) => (dispatch) => {
     .getFullDataWeather(city)
     .then((data) => dispatch(weatherLoadedAc(data)))
     .catch((error) => {
-      console.log(error);
-      alert(
+      console.log(
         `Incorrect city!!! Please enter correct city name\n Error: ${error.message}`
       );
       dispatch(weatherErrorAc(error));
